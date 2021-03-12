@@ -1,0 +1,26 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-service #代表注册到Eureka中的名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wumingshilf/springcloud.git
+          search-paths:
+            - springcloud
+          username: wumingshilf
+          password: lufeng19950807
+          force-pull: true
+          skip-ssl-validation: true
+      label: master
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: configServer3344 #修改主机服务名称
+    prefer-ip-address: true  #修改ip
